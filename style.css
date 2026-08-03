@@ -938,6 +938,14 @@ footer a:hover {
     width: 100%;
     text-align: center;
 }
+.hero h1 {
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero h1:nth-child(2) {
+    font-size: 30px;
+}
 
 
 }
