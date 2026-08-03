@@ -946,6 +946,11 @@ footer a:hover {
 .hero h1:nth-child(2) {
     font-size: 30px;
 }
-
+.hero h2 {
+    font-size: 30px;
+    max-width: 350px;
+    margin: 0 auto 20px;
+    text-align: center;
+}
 
 }
