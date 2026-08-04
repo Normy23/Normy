@@ -117,6 +117,7 @@
         </tr>
     </table>
 </section>
+
 <section>
     <h2>Почему выбирают нас</h2>
     <div class="advantage-card"><div class="icon">✨</div><h3>Сайт под задачи бизнеса</h3><p>Создаём страницы, которые помогают привлекать клиентов и рассказывать о ваших услугах.</p></div>
@@ -186,45 +187,6 @@
     </a>
 </div>
 
-<script>
-document.getElementById('callbackForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var name = document.getElementById('userName').value.trim();
-    var phone = document.getElementById('userPhone').value.trim();
-    if (!name || !phone) {
-        alert('Заполните оба поля, ебанат.');
-        return;
-    }
-    ym(111309824, 'reachGoal', 'Заявка с сайта');
-    document.getElementById('toastUserName').textContent = name;
-    var toast = document.getElementById('toastMessage');
-    toast.style.display = 'block';
-    toast.style.opacity = '1';
-    setTimeout(function() {
-        toast.style.opacity = '0';
-        setTimeout(function() { toast.style.display = 'none'; }, 300);
-    }, 3000);
-    document.getElementById('userName').value = '';
-    document.getElementById('userPhone').value = '';
-});
-
-function calculatePrice() {
-  var type = document.getElementById('projectType').value;
-  var pages = parseInt(document.getElementById('pagesCount').value) || 0;
-  var crm = document.getElementById('crmCheck').checked;
-  var basePrice = 0;
-  if (type === 'landing') basePrice = 5000;
-  else if (type === 'store') basePrice = 12000;
-  else if (type === 'portfolio') basePrice = 7000;
-  var total = basePrice + (pages - 1) * 1500;
-  if (crm) total += 3000;
-  if (total < 0 || pages < 1) {
-    document.getElementById('priceResult').innerHTML = 'Введи нормальное количество страниц, дебил.';
-  } else {
-    document.getElementById('priceResult').innerHTML = 'Итого: ' + total + ' ₽';
-  }
-}
-</script>
 <script>
 document.getElementById('callbackForm').addEventListener('submit', function(e) {
     e.preventDefault();
