@@ -1051,48 +1051,45 @@ footer a:hover {
     display: block;
     clear: both;
 }
-/* ===== ТЕЛЕГРАМ — ТОЛЬКО ИКОНКА ===== */
+/* ===== КНОПКА ТЕЛЕГРАМА ===== */
 .telegram-fixed-button {
     position: fixed;
-    bottom: 16px;
-    right: 16px;
+    bottom: 10px;
+    right: 10px;
     z-index: 999;
-    display: block !important;
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    padding: 0 !important;
-    width: auto !important;
-    height: auto !important;
+    display: block;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
 .telegram-fixed-button a {
-    display: flex !important;
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 56px;
     height: 56px;
-    background: #0088cc !important;
-    border-radius: 50% !important;
-    text-decoration: none !important;
-    color: white !important;
-    transition: 0.2s ease;
+    background: #0088cc;
+    border-radius: 50%;
+    text-decoration: none;
     box-shadow: 0 4px 12px rgba(0,136,204,0.35);
-    padding: 0 !important;
-    border: none !important;
+    transition: 0.2s;
+    border: none;
+    padding: 0;
 }
 
 .telegram-fixed-button a:hover {
     transform: scale(1.05);
-    background: #0077b3 !important;
+    background: #0077b3;
     box-shadow: 0 6px 16px rgba(0,136,204,0.45);
 }
 
 .telegram-fixed-button a svg {
-    display: block !important;
-    width: 28px !important;
-    height: 28px !important;
-    fill: white !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    display: block;
+    width: 28px;
+    height: 28px;
+    fill: white;
+    margin: 0;
+    padding: 0;
 }
