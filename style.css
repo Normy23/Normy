@@ -954,72 +954,90 @@ footer a:hover {
 }
 
 }
-/* Калькулятор */
+/* ===== КАЛЬКУЛЯТОР — ИСПРАВЛЕННЫЙ ===== */
 .calculator-block {
-    background: #f5f5f5;
-    padding: 25px;
-    border-radius: 18px;
-    max-width: 400px;
+    background: #ffffff;
+    padding: 30px 25px 35px;
+    border-radius: 20px;
+    max-width: 420px;
     margin: 30px auto;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    border: 1px solid #eef2f6;
+    box-sizing: border-box;
 }
+
 .calculator-block h3 {
-    margin-top: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 20px 0;
+    text-align: center;
 }
+
 .calculator-block select,
 .calculator-block input[type="number"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    border: 1px solid #d0d7de;
+    border-radius: 12px;
+    font-size: 16px;
+    background: #fafbfc;
     box-sizing: border-box;
+    transition: 0.2s;
 }
+
+.calculator-block select:focus,
+.calculator-block input[type="number"]:focus {
+    border-color: #2563eb;
+    outline: none;
+    background: #ffffff;
+}
+
 .calculator-block label {
-    display: block;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #222;
+    margin: 8px 0 18px 0;
+    cursor: pointer;
 }
+
+.calculator-block label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    accent-color: #2563eb;
+}
+
 .calculator-block button {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
     background: #2563eb;
     color: white;
     border: none;
-    border-radius: 30px;
+    border-radius: 40px;
     font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 6px 14px rgba(37,99,235,0.25);
 }
-.calculator-block #priceResult {
+
+.calculator-block button:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+#priceResult {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 22px;
-    font-weight: bold;
+    font-weight: 700;
+    color: #0a1e3c;
+    padding: 12px;
+    background: #f0f4fe;
+    border-radius: 14px;
+    border: 1px solid #d9e2f5;
 }
-
-/* Кнопка Телеграма */
-.telegram-fixed-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 999;
-}
-.telegram-fixed-button a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    background: #0088cc;
-    border-radius: 50%;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    text-decoration: none;
-    color: white;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: Arial, sans-serif;
-    transition: 0.3s;
-}
-.telegram-fixed-button a:hover {
-    transform: scale(1.05);
-}
-
