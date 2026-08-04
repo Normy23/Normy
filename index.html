@@ -228,15 +228,15 @@ function calculatePrice() {
 <script>
 document.getElementById('callbackForm').addEventListener('submit', function(e) {
     e.preventDefault();
+
     var name = document.getElementById('userName').value.trim();
     var phone = document.getElementById('userPhone').value.trim();
 
     if (!name || !phone) {
-        alert('Заполните оба поля, ебанат.');
+        alert('Пожалуйста, заполните оба поля.');
         return;
     }
 
-    // Отправка в Telegram
     var token = '8764382633:AAH2ewud6OxxPNXqMFTckYoMHE2SbKyJTLg';
     var chat_id = '6619364061';
     var message = '🔔 Новая заявка!%0A👤 Имя: ' + name + '%0A📞 Телефон: ' + phone;
@@ -260,10 +260,8 @@ document.getElementById('callbackForm').addEventListener('submit', function(e) {
     })
     .catch(error => console.error('Ошибка:', error));
 
-    // Метрика
     ym(111309824, 'reachGoal', 'Заявка с сайта');
 
-    // Тост
     document.getElementById('toastUserName').textContent = name;
     var toast = document.getElementById('toastMessage');
     toast.style.display = 'block';
@@ -277,7 +275,6 @@ document.getElementById('callbackForm').addEventListener('submit', function(e) {
     document.getElementById('userPhone').value = '';
 });
 </script>
-
 
 </body>
 </html>
