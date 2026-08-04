@@ -1054,8 +1054,8 @@ footer a:hover {
 /* ===== ТЕЛЕГРАМ — ТОЛЬКО ИКОНКА ===== */
 .telegram-fixed-button {
     position: fixed;
-    bottom: 24px;
-    right: 24px;
+    bottom: 8px;
+    right: 8px;
     z-index: 999;
     display: block !important;
     background: none !important;
