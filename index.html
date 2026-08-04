@@ -284,14 +284,19 @@
 </section>
 
 <section id="contacts">
-
     <h2>Готовы запустить свой сайт?</h2>
+    <p>Оставьте контакты — мы свяжемся с вами в течение часа</p>
 
-    <p>Напишите нам - обсудим вашу идею, оценим задачу и предложим подходящий вариант создания сайта.</p>
-    <a href="https://vk.ru/club240638435">
-        <button>Обсудить проект</button>
-    </a>
-
+    <form id="callbackForm" style="max-width: 400px; margin: 30px auto; text-align: left; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.06);">
+        <input type="text" id="userName" placeholder="Ваше имя" required style="width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #d0d7de; border-radius: 12px; font-size: 16px; box-sizing: border-box;">
+        <input type="tel" id="userPhone" placeholder="Номер телефона" required style="width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #d0d7de; border-radius: 12px; font-size: 16px; box-sizing: border-box;">
+        <button type="submit" style="width: 100%; padding: 14px; background: #2563eb; color: white; border: none; border-radius: 40px; font-size: 18px; font-weight: 600; cursor: pointer;">Отправить заявку</button>
+    </form>
+    <!-- Тост-уведомление -->
+<div id="toastMessage" style="display: none; position: fixed; top: 40px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.95); backdrop-filter: blur(8px); color: #1e1e2f; padding: 18px 32px; border-radius: 60px; font-size: 18px; font-weight: 500; box-shadow: 0 8px 30px rgba(108, 92, 231, 0.25); border: 1px solid rgba(108, 92, 231, 0.2); z-index: 10000; white-space: nowrap; transition: opacity 0.3s ease; font-family: inherit;">
+    <span style="color: #6c5ce7; font-size: 22px; margin-right: 10px;">✅</span>
+    Спасибо, <span id="toastUserName" style="color: #6c5ce7; font-weight: 700;">друг</span>! Мы свяжемся с вами.
+</div>
 </section>
 <footer>
     <p>© 2026 Nova Web Studio. Создание современных сайтов для бизнеса.</p>
@@ -307,7 +312,6 @@
 
 </script>
 <script src="script.js"></script>
-<!-- Кнопка Телеграма -->
 <div class="telegram-fixed-button">
     <a href="https://t.me/userNormy" target="_blank" aria-label="Telegram">
         <svg viewBox="0 0 24 24">
@@ -315,7 +319,38 @@
         </svg>
     </a>
 </div>
+<script>
+    document.getElementById('callbackForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = document.getElementById('userName').value.trim();
+        var phone = document.getElementById('userPhone').value.trim();
 
+        if (!name || !phone) {
+            alert('Заполните оба поля, ебанат.');
+            return;
+        }
+
+        // Подставляем имя в тост
+        document.getElementById('toastUserName').textContent = name;
+
+        // Показываем тост
+        var toast = document.getElementById('toastMessage');
+        toast.style.display = 'block';
+        toast.style.opacity = '1';
+
+        // Скрываем через 3 секунды
+        setTimeout(function() {
+            toast.style.opacity = '0';
+            setTimeout(function() {
+                toast.style.display = 'none';
+            }, 300);
+        }, 3000);
+
+        // Очищаем форму
+        document.getElementById('userName').value = '';
+        document.getElementById('userPhone').value = '';
+    });
+</script>
 
 <!-- Скрипт калькулятора -->
 <script>
@@ -338,6 +373,7 @@ function calculatePrice() {
     document.getElementById('priceResult').innerHTML = 'Итого: ' + total + ' ₽';
   }
 }
+
 </script>
 </body>
 </html>
