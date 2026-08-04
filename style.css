@@ -1051,40 +1051,48 @@ footer a:hover {
     display: block;
     clear: both;
 }
-/* ===== КНОПКА ТЕЛЕГРАМА — САМОЛЁТИК ===== */
+/* ===== ТЕЛЕГРАМ — ТОЛЬКО ИКОНКА ===== */
 .telegram-fixed-button {
     position: fixed;
     bottom: 24px;
     right: 24px;
     z-index: 999;
+    display: block !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    width: auto !important;
+    height: auto !important;
 }
 
 .telegram-fixed-button a {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     width: 56px;
     height: 56px;
-    background: #0088cc;
-    border-radius: 50%;
-    text-decoration: none;
-    color: white;
-    font-size: 28px;
-    font-weight: 400;
+    background: #0088cc !important;
+    border-radius: 50% !important;
+    text-decoration: none !important;
+    color: white !important;
     transition: 0.2s ease;
     box-shadow: 0 4px 12px rgba(0,136,204,0.35);
-    line-height: 1;
+    padding: 0 !important;
+    border: none !important;
 }
 
 .telegram-fixed-button a:hover {
     transform: scale(1.05);
-    background: #0077b3;
+    background: #0077b3 !important;
     box-shadow: 0 6px 16px rgba(0,136,204,0.45);
 }
 
 .telegram-fixed-button a svg {
-    display: block;
-    width: 28px;
-    height: 28px;
-    fill: white;
+    display: block !important;
+    width: 28px !important;
+    height: 28px !important;
+    fill: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
