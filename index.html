@@ -160,11 +160,12 @@
 <section id="contacts">
     <h2>Готовы запустить свой сайт?</h2>
     <p>Оставьте контакты — мы свяжемся с вами в течение часа</p>
-    <form id="callbackForm" style="max-width: 400px; margin: 30px auto; text-align: left; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.06);">
-        <input type="text" id="userName" placeholder="Ваше имя" required style="width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #d0d7de; border-radius: 12px; font-size: 16px; box-sizing: border-box;">
-        <input type="tel" id="userPhone" placeholder="Номер телефона" required style="width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #d0d7de; border-radius: 12px; font-size: 16px; box-sizing: border-box;">
-        <button type="submit" style="width: 100%; padding: 14px; background: #2563eb; color: white; border: none; border-radius: 40px; font-size: 18px; font-weight: 600; cursor: pointer;">Отправить заявку</button>
-    </form>
+    <form id="callbackForm" action="https://formspree.io/f/mvkppnow" method="POST" style="max-width: 400px; margin: 30px auto; text-align: left; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.06);">
+    <input type="text" name="name" placeholder="Ваше имя" required style="width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #d0d7de; border-radius: 12px; font-size: 16px; box-sizing: border-box;">
+    <input type="tel" name="phone" placeholder="Номер телефона" required style="width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #d0d7de; border-radius: 12px; font-size: 16px; box-sizing: border-box;">
+    <input type="hidden" name="_subject" value="Новая заявка с сайта Nova Web Studio">
+    <button type="submit" style="width: 100%; padding: 14px; background: #2563eb; color: white; border: none; border-radius: 40px; font-size: 18px; font-weight: 600; cursor: pointer;">Отправить заявку</button>
+</form>
     <div id="toastMessage" style="display: none; position: fixed; top: 40px; left: 50%; transform: translateX(-50%); z-index: 10000; transition: opacity 0.3s ease; font-size: 18px; font-weight: 500; color: #6c5ce7; background: none; border: none; padding: 0; box-shadow: none; max-width: 90%; white-space: normal; word-wrap: break-word; text-align: center; width: auto;">
         <span style="font-size: 22px; margin-right: 8px;">✅</span>
         Спасибо, <span id="toastUserName" style="font-weight: 700; color: #6c5ce7;">друг</span>! Мы свяжемся с вами.
@@ -188,51 +189,37 @@
 </div>
 
 <script>
-document.getElementById('callbackForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    document.getElementById('callbackForm').addEventListener('submit', function(e) {
+        // Не отменяем отправку, чтобы форма отправилась на Formspree
+        // Но показываем тост сразу после клика
+        var name = document.getElementById('userName').value.trim();
+        var phone = document.getElementById('userPhone').value.trim();
 
-    var name = document.getElementById('userName').value.trim();
-    var phone = document.getElementById('userPhone').value.trim();
-
-    if (!name || !phone) {
-        alert('Пожалуйста, заполните оба поля.');
-        return;
-    }
-
-    fetch('https://formspree.io/f/mvkppnow', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-            name: name,
-            phone: phone
-        })
-    })
-    .then(response => {
-        if (response.ok) {
-            console.log('Заявка отправлена на почту');
-        } else {
-            console.error('Ошибка при отправке:', response.status);
+        if (!name || !phone) {
+            e.preventDefault();
+            alert('Пожалуйста, заполните оба поля.');
+            return;
         }
-    })
-    .catch(error => console.error('Ошибка:', error));
 
-    ym(111309824, 'reachGoal', 'Заявка с сайта');
+        // Показываем тост
+        document.getElementById('toastUserName').textContent = name;
+        var toast = document.getElementById('toastMessage');
+        toast.style.display = 'block';
+        toast.style.opacity = '1';
+        setTimeout(function() {
+            toast.style.opacity = '0';
+            setTimeout(function() { toast.style.display = 'none'; }, 300);
+        }, 3000);
 
-    document.getElementById('toastUserName').textContent = name;
-    var toast = document.getElementById('toastMessage');
-    toast.style.display = 'block';
-    toast.style.opacity = '1';
-    setTimeout(function() {
-        toast.style.opacity = '0';
-        setTimeout(function() { toast.style.display = 'none'; }, 300);
-    }, 3000);
+        // Метрика
+        ym(111309824, 'reachGoal', 'Заявка с сайта');
 
-    document.getElementById('userName').value = '';
-    document.getElementById('userPhone').value = '';
-});
+        // Очищаем форму через секунду (чтобы данные ушли)
+        setTimeout(function() {
+            document.getElementById('userName').value = '';
+            document.getElementById('userPhone').value = '';
+        }, 1000);
+    });
 </script>
 
 </body>
