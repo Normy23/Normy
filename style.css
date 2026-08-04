@@ -1051,34 +1051,40 @@ footer a:hover {
     display: block;
     clear: both;
 }
-/* ===== КНОПКА ТЕЛЕГРАМА — ФИКС ===== */
+/* ===== КНОПКА ТЕЛЕГРАМА — САМОЛЁТИК ===== */
 .telegram-fixed-button {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 24px;
+    right: 24px;
     z-index: 999;
-    display: block !important;
 }
 
 .telegram-fixed-button a {
-    display: flex !important;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     background: #0088cc;
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     text-decoration: none;
-    color: white !important;
-    font-size: 30px;
-    font-weight: bold;
-    font-family: Arial, sans-serif;
-    transition: 0.2s;
+    color: white;
+    font-size: 28px;
+    font-weight: 400;
+    transition: 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,136,204,0.35);
     line-height: 1;
 }
 
 .telegram-fixed-button a:hover {
-    transform: scale(1.08);
+    transform: scale(1.05);
     background: #0077b3;
+    box-shadow: 0 6px 16px rgba(0,136,204,0.45);
+}
+
+.telegram-fixed-button a svg {
+    display: block;
+    width: 28px;
+    height: 28px;
+    fill: white;
 }
