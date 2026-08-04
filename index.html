@@ -225,6 +225,59 @@ function calculatePrice() {
   }
 }
 </script>
+<script>
+document.getElementById('callbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('userName').value.trim();
+    var phone = document.getElementById('userPhone').value.trim();
+
+    if (!name || !phone) {
+        alert('Заполните оба поля, ебанат.');
+        return;
+    }
+
+    // Отправка в Telegram
+    var token = '8764382633:AAH2ewud6OxxPNXqMFTckYoMHE2SbKyJTLg';
+    var chat_id = '6619364061';
+    var message = '🔔 Новая заявка!%0A👤 Имя: ' + name + '%0A📞 Телефон: ' + phone;
+
+    fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: chat_id,
+            text: message,
+            parse_mode: 'HTML'
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            console.log('Заявка отправлена в Telegram');
+        } else {
+            console.error('Ошибка:', data);
+        }
+    })
+    .catch(error => console.error('Ошибка:', error));
+
+    // Метрика
+    ym(111309824, 'reachGoal', 'Заявка с сайта');
+
+    // Тост
+    document.getElementById('toastUserName').textContent = name;
+    var toast = document.getElementById('toastMessage');
+    toast.style.display = 'block';
+    toast.style.opacity = '1';
+    setTimeout(function() {
+        toast.style.opacity = '0';
+        setTimeout(function() { toast.style.display = 'none'; }, 300);
+    }, 3000);
+
+    document.getElementById('userName').value = '';
+    document.getElementById('userPhone').value = '';
+});
+</script>
+
 
 </body>
 </html>
