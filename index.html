@@ -199,25 +199,22 @@ document.getElementById('callbackForm').addEventListener('submit', function(e) {
         return;
     }
 
-    var token = '8764382633:AAH2ewud6OxxPNXqMFTckYoMHE2SbKyJTLg';
-    var chat_id = '6619364061';
-    var message = '🔔 Новая заявка!%0A👤 Имя: ' + name + '%0A📞 Телефон: ' + phone;
-
-    fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+    fetch('https://formspree.io/f/mvkppnow', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
         body: JSON.stringify({
-            chat_id: chat_id,
-            text: message,
-            parse_mode: 'HTML'
+            name: name,
+            phone: phone
         })
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.ok) {
-            console.log('Заявка отправлена в Telegram');
+    .then(response => {
+        if (response.ok) {
+            console.log('Заявка отправлена на почту');
         } else {
-            console.error('Ошибка:', data);
+            console.error('Ошибка при отправке:', response.status);
         }
     })
     .catch(error => console.error('Ошибка:', error));
